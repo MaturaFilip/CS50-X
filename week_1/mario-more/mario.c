@@ -1,0 +1,47 @@
+#include <cs50.h>
+#include <stdio.h>
+
+int validate_input(void);
+void pyramide(int n);
+
+int main(void)
+{
+    // ask user for input and then output pyramide
+    int height = validate_input();
+    pyramide(height);
+}
+
+int validate_input(void)
+{
+    int n;
+    do
+    {
+        n = get_int("Height: ");
+    }
+    while (n < 1);
+    return n;
+}
+
+void pyramide(int n)
+{
+    for (int i = 0; i < n; i++)
+    {
+        for (int j = n - 1; j > i; j--)
+        {
+            printf(" ");
+        }
+        for (int j = 0; j < (i + 1); j++)
+        {
+            printf("#");
+        }
+
+        printf("  ");
+
+        for (int j = 0; j < (i + 1); j++)
+        {
+            printf("#");
+        }
+
+        printf("\n");
+    }
+}
