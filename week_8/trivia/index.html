@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap"
+      rel="stylesheet"
+    />
+    <link href="styles.css" rel="stylesheet" />
+    <title>Trivia!</title>
+    <script>
+      // TODO: Add code to check answers to questions
+      document.addEventListener("DOMContentLoaded", function () {
+        document
+          .querySelector("#checker")
+          .addEventListener("submit", function (event) {
+            let input = document.querySelector("input");
+            if (input == 14) {
+              input.style.backgroundColor = "green";
+              input.parentElement.querySelector("#open").innerHTML = "Correct!";
+            } else {
+              openP.style.backgroundColor = "red";
+              input.parentElement.querySelector("#open").innerHTML = "Correct!";
+            }
+
+            event.preventDefault();
+          });
+
+        const wrongMcq = document.querySelectorAll(".wrong");
+        const incorrectText = document.querySelector("#mcq");
+        const pWrong = document.createTextNode("Incorrect");
+        for (let i = 0; i < wrongMcq.length; i++) {
+          wrongMcq[i].addEventListener("click", function (event) {
+            wrongMcq[i].style.backgroundColor = "red";
+            document.getElementById("mcq").textContent = "";
+            incorrectText.appendChild(pWrong);
+            event.preventDefault();
+          });
+        }
+
+        const correctMcq = document.querySelector("#correct");
+        const correctText = document.querySelector("#mcq");
+        const pCorrect = document.createTextNode("Correct");
+        correctMcq.addEventListener("click", function (event) {
+          correctMcq.style.backgroundColor = "green";
+          document.getElementById("mcq").textContent = "";
+          incorrectText.appendChild(pCorrect);
+          event.preventDefault();
+        });
+      });
+    </script>
+  </head>
+  <body>
+    <div class="header">
+      <h1>Trivia!</h1>
+    </div>
+
+    <div class="container">
+      <div class="section">
+        <h2>Part 1: Multiple Choice</h2>
+        <hr />
+        <!-- TODO: Add multiple choice question here -->
+        <h3>What is the capital of Czech republic?</h3>
+        <button id="correct">Prague</button>
+        <button class="wrong">Roma</button>
+        <button class="wrong">Paris</button>
+        <button class="wrong">Ostrava</button>
+        <button class="wrong">Brno</button>
+        <button class="wrong">Bratislava</button>
+        <p id="mcq"></p>
+      </div>
+
+      <div class="section">
+        <h2>Part 2: Free Response</h2>
+        <hr />
+        <!-- TODO: Add free response question here -->
+        <h3>How many administrative units are in Czech republic?</h3>
+
+        <input
+          type="text"
+          autocomplete="off"
+          id="answer"
+          ,
+          placeholder="Answer"
+        />
+        <button id="checker"></button>
+
+        <p id="open"></p>
+      </div>
+    </div>
+  </body>
+</html>
